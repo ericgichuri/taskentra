@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+    --primary: #0F172Afa;
+    --accent: #F97316;
+    --background: #F8FAFC;
+    --secondary: #3ba4da;
+}
+
+* Custom scrollbar for a premium feel */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--background); }
+::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 10px; }
+
+/* Premium Tab Button */
+.tab-btn {
+    padding: 0.75rem 1.75rem;
+    border-radius: 1rem;
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--background);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid transparent;
+}
+
+/* The "Glow" Active State */
+.active-tab {
+    background: rgba(59, 164, 218, 0.1);
+    color: var(--secondary) !important;
+    border: 1px solid rgba(59, 164, 218, 0.3);
+    box-shadow: 0 0 20px rgba(59, 164, 218, 0.1);
+}
+
+/* Premium Field Styling */
+.profile-field {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    padding-bottom: 1rem;
+}
+
+.profile-field label {
+    display: block;
+    font-size: 9px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #475569;
+    margin-bottom: 0.5rem;
+}
+
+.profile-field p {
+    color: #f1f5f9;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Glass Action Cards */
+.action-card {
+    width: 100%;
+    background: var(--primary);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+}
+
+.action-card:hover {
+    border-color: var(--primary);
+    transform: translateX(5px);
+    background: var(--primary);
+}

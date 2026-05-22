@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}Task List{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto space-y-4">
+    <!-- Page Header -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div>
+            <h1 class="text-[var(--primary)] text-xl font-bold tracking-tight">Available Tasks</h1>
+            <p class="text-slate-500 text-xs font-semibold uppercase  mt-2">
+                System Status: <span class="text-[var(--secondary)]">Operational</span>
+            </p>
+        </div>
+        
+        <!-- Account Status Badge -->
+        <div class="bg-[var(--primary)] border border-white/5 px-6 py-3 rounded-2xl flex items-center gap-4">
+            <div class="text-right">
+                <p class="text-[9px] font-black text-slate-500 uppercase tracking-widest">Current Tier</p>
+                <p class="text-white font-bold text-sm" id="account-tier-label">Loading...</p>
+            </div>
+            <div class="w-10 h-10 rounded-xl bg-[var(--secondary)]/10 flex items-center justify-center text-[var(--secondary)] border border-[var(--secondary)]/20">
+                <i class="fa-solid fa-layer-group"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Task Container -->
+    <div id="task-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Tasks will be injected here by task_list.js -->
+        <div class="col-span-full py-20 text-center animate-pulse">
+            <p class="text-slate-600 font-mono text-xs uppercase tracking-widest">Scanning for available tasks...</p>
+        </div>
+    </div>
+</div>
+<style>
+    /* Container Background */
+    #task-grid {
+        /* Ensure the grid background is clear */
+        background: transparent;
+    }
+
+    /* Card Transitions */
+    #task-grid .group {
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    /* Profile Field Labels - Light Version */
+    .profile-field label {
+        font-size: 8px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: var(--secondary);
+        margin-bottom: 2px;
+    }
+    .profile-field p {
+        letter-spacing: 0.15em;
+        color: var(--primary);
+        margin-bottom: 2px;
+    }
+
+    /* Accent Pulse on Hover */
+    #task-grid .group:hover h3 {
+        color: var(--accent);
+        transition: color 0.3s ease;
+    }
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/task_list.js') }}"></script>
+{% endblock %}

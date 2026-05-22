@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto space-y-4">
+    
+    <!-- Welcome Header -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div>
+            <h1 class="text-[var(--primary)] text-3xl font-bold tracking-tight">System Overview</h1>
+            <p class="text-slate-500 font-medium">Welcome back, <span class="text-[var(--secondary)]">Operator</span>. Your focus is sharp today.</p>
+        </div>
+        <div class="flex items-center gap-4">
+            <div>
+                <button class="bg-[var(--primary)] border border-slate-800 text-white p-3 rounded-lg hover:border-slate-600 transition-all">
+                    <i class="fa-solid fa-bell"></i>
+                </button>
+            </div>
+            
+            <button class="bg-[var(--accent)] text-white font-semibold py-3 px-4 rounded-lg shadow-[0_0_20px_rgba(249,115,22,0.3)] hover:scale-105 transition-all">
+                Withdraw Funds
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Stats: The "Glow" Row -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Wallet Card (Accent Focused) -->
+        <div class="relative group">
+            <div class="absolute -inset-1 bg-gradient-to-r from-[var(--accent)] to-orange-600 rounded-[1rem] blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+            <div class="relative bg-[var(--primary)] h-[150px] border border-white/5 p-8 rounded-[1rem] overflow-hidden">
+                <p class="text-slate-500 text-xs font-bold uppercase tracking-[0.2em] mb-2">Available Credits</p>
+                <div class="flex items-baseline gap-2">
+                    <span class="text-[var(--accent)] text-2xl font-bold" id="walletBalance">$0.00</span>
+                    <span class="text-slate-600 text-sm font-bold">USD</span>
+                </div>
+                <div class="mt-6 flex items-center justify-between">
+                    <span class="text-[10px] bg-green-500/10 text-green-500 px-3 py-1 rounded-full font-bold">Verified Balance</span>
+                    <i class="fa-solid fa-shield-check text-slate-800 text-4xl"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Focus/Level Card (Secondary Focused) -->
+        <div class="relative group h-[150px]">
+            <div class="absolute -inset-1 bg-gradient-to-r from-[var(--secondary)] to-blue-600 rounded-[1rem] blur opacity-10 group-hover:opacity-30 transition duration-1000"></div>
+            <div class="relative bg-[var(--primary)] border border-white/5 p-8 rounded-[1rem]">
+                <div class="flex justify-between items-start mb-4">
+                    <p class="text-slate-500 text-xs font-black uppercase tracking-[0.2em]">Growth Metric</p>
+                    <span class="text-[var(--secondary)] font-black italic" id="userLevel">LVL 0</span>
+                </div>
+                <div class="space-y-4">
+                    <div class="flex justify-between text-[10px] font-bold uppercase tracking-widest">
+                        <span class="text-slate-400">XP Progress</span>
+                        <span class="text-white" id="xpPercent">0%</span>
+                    </div>
+                    <div class="w-full bg-slate-800/50 h-3 rounded-full overflow-hidden p-[2px] border border-white/5">
+                        <div id="xpBar" class="bg-gradient-to-r from-[var(--secondary)] to-cyan-400 h-full rounded-full transition-all duration-1000 shadow-[0_0_10px_rgba(59,164,218,0.5)]" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Streak Card -->
+        <div class="bg-[var(--primary)] h-[150px] border border-white/5 p-8 rounded-[1rem] flex flex-col justify-center items-center text-center">
+            <div class="flex gap-2 mb-4" id="streakDots"></div>
+            <h2 class="text-white text-3xl font-black" id="focusStreak">0 Days</h2>
+            <p class="text-slate-500 text-xs font-bold uppercase tracking-widest mt-1">Consistency Streak</p>
+        </div>
+    </div>
+
+    <!-- Task List -->
+    <div class="space-y-6">
+        <div class="flex items-center gap-4">
+            <h3 class="text-[var(--primary)] text-xl font-black tracking-tight">Active Opportunities</h3>
+            <div class="h-[1px] flex-1 bg-gradient-to-r from-slate-800 to-transparent"></div>
+        </div>
+        
+        <div id="taskContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Skeleton -->
+            <div class="h-32 bg-slate-900/50 rounded-[2rem] border border-white/5 animate-pulse"></div>
+            <div class="h-32 bg-slate-900/50 rounded-[2rem] border border-white/5 animate-pulse"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

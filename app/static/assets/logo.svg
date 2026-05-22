@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="1500"
+   height="1500"
+   viewBox="0 0 396.87499 396.875"
+   version="1.1"
+   id="svg1"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient16">
+      <stop
+         style="stop-color:#0f172a;stop-opacity:1;"
+         offset="0.24250682"
+         id="stop16" />
+      <stop
+         style="stop-color:#3ba4da;stop-opacity:1;"
+         offset="1"
+         id="stop17" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient14">
+      <stop
+         style="stop-color:#0f172a;stop-opacity:1;"
+         offset="0.4972752"
+         id="stop14" />
+      <stop
+         style="stop-color:#3ba4da;stop-opacity:1;"
+         offset="1"
+         id="stop15" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient12">
+      <stop
+         style="stop-color:#0f172a;stop-opacity:1;"
+         offset="0.30381477"
+         id="stop12" />
+      <stop
+         style="stop-color:#3ba4da;stop-opacity:1;"
+         offset="1"
+         id="stop13" />
+    </linearGradient>
+    <linearGradient
+       xlink:href="#linearGradient12"
+       id="linearGradient13"
+       x1="91.053329"
+       y1="213.96217"
+       x2="180.97675"
+       y2="213.96217"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(2.0601732,0,0,2.0601733,-151.17493,-241.38319)" />
+    <linearGradient
+       xlink:href="#linearGradient14"
+       id="linearGradient15"
+       x1="73.197472"
+       y1="175.69987"
+       x2="246.66882"
+       y2="175.69987"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.6836152,0,0,1.8182839,-105.83575,-141.3494)" />
+    <linearGradient
+       xlink:href="#linearGradient16"
+       id="linearGradient17"
+       x1="177.77428"
+       y1="242.2448"
+       x2="207.47725"
+       y2="242.2448"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.6836152,0,0,1.8182839,-105.83575,-141.3494)" />
+  </defs>
+  <g
+     id="layer1">
+    <text
+       xml:space="preserve"
+       style="font-weight:bold;font-size:327.924px;font-family:'Sharp Sans';-inkscape-font-specification:'Sharp Sans, Bold';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:url(#linearGradient13);fill-opacity:1;fill-rule:evenodd;stroke:#0254f0;stroke-width:0;stroke-dasharray:none;stroke-opacity:0.394537"
+       x="16.716049"
+       y="313.18057"
+       id="text1"
+       transform="scale(1.1323764,0.88309859)"><tspan
+         id="tspan1"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:327.924px;font-family:'Humnst777 Blk BT';-inkscape-font-specification:'Humnst777 Blk BT, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:url(#linearGradient13);fill-opacity:1;stroke:#0254f0;stroke-width:0;stroke-dasharray:none;stroke-opacity:0.394537"
+         x="16.716049"
+         y="313.18057">T</tspan></text>
+    <path
+       style="fill:#980000;fill-opacity:1;fill-rule:evenodd;stroke:#0254f0;stroke-width:0;stroke-dasharray:none;stroke-opacity:0.394537"
+       d="M 31.513346,384.84016 224.54451,377.82432"
+       id="path2" />
+    <path
+       style="fill:url(#linearGradient15);fill-opacity:1;fill-rule:evenodd;stroke:#0254f0;stroke-width:0;stroke-dasharray:none;stroke-opacity:0.394537"
+       d="m 236.14493,236.50483 c 0,0 -24.1289,75.67106 -74.24275,75.67106 l -144.335883,-0.70871 -0.165668,-21.04759 144.965551,0.70872 c 0,0 36.19336,-6.01359 56.6101,-55.62576 20.41676,-49.61215 62.17833,-150.840987 62.17833,-150.840987 l -13.92053,-9.020401 38.51343,-31.571371 3.71214,54.62348 -13.92053,-9.521507 z"
+       id="path10" />
+    <rect
+       style="font-variation-settings:normal;opacity:0.1;vector-effect:none;fill:#980000;fill-opacity:0;fill-rule:evenodd;stroke:none;stroke-width:0.462928;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000"
+       id="rect10"
+       width="56.610104"
+       height="22.550982"
+       x="17.128803"
+       y="289.12378" />
+    <rect
+       style="font-variation-settings:normal;fill:#3ba4da;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.81359;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill;stop-color:#000000"
+       id="rect11"
+       width="53.361977"
+       height="22.550982"
+       x="256.64667"
+       y="288.75232"
+       ry="11.275491" />
+    <path
+       style="fill:url(#linearGradient17);fill-opacity:1;fill-rule:evenodd;stroke:#0254f0;stroke-width:0.81359;stroke-dasharray:none;stroke-opacity:0.394537;paint-order:markers stroke fill"
+       d="m 226.58301,289.6905 c 0,0 -21.82736,19.72459 -31.62741,20.20569 -9.80005,0.48109 47.21839,-0.4811 47.21839,-0.4811 l 0.89092,-21.16785 z"
+       id="path11" />
+    <path
+       style="fill:#f97316;fill-opacity:1;fill-rule:evenodd;stroke:#0254f0;stroke-width:0.81359;stroke-dasharray:none;stroke-opacity:0.394537;paint-order:markers stroke fill"
+       id="path12"
+       d="M 327.47195,23.386663 A 11.136414,10.933809 0 0 1 316.426,34.320112 11.136414,10.933809 0 0 1 305.2006,23.564287 a 11.136414,10.933809 0 0 1 10.86358,-11.108186 11.136414,10.933809 0 0 1 11.4019,10.575361 l -11.13054,0.355201 z" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:45.4879px;font-family:Montserrat;-inkscape-font-specification:'Montserrat, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#0f172a;fill-opacity:1;fill-rule:evenodd;stroke:#0254f0;stroke-width:0;stroke-dasharray:none;stroke-opacity:0.394537;paint-order:markers stroke fill"
+       x="5.0773039"
+       y="496.08417"
+       id="text12"
+       transform="scale(1.329553,0.75213249)"><tspan
+         id="tspan12"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:45.4879px;font-family:Montserrat;-inkscape-font-specification:'Montserrat, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#0f172a;fill-opacity:1;stroke-width:0;stroke-dasharray:none"
+         x="5.0773039"
+         y="496.08417">TASKENTRA</tspan></text>
+    <rect
+       style="font-variation-settings:normal;opacity:0.1;vector-effect:none;fill:#980000;fill-opacity:0;fill-rule:evenodd;stroke:none;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+       id="rect17"
+       width="400.48294"
+       height="398.67899"
+       x="-1.8039773"
+       y="-0.60132575" />
+  </g>
+</svg>

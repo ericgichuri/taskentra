@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block title %}Wallet{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto space-y-4">
+    <!-- Wallet Header -->
+    <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-5">
+        <div>
+            <h1 class="text-[var(--primary)] text-xl font-black tracking-tight">Financial Terminal</h1>
+            <p class="text-slate-500 text-xs font-bold uppercase tracking-[0.3em] mt-2">Manage your earned liquidity</p>
+        </div>
+        
+        <!-- Total Balance Display -->
+        <div class="bg-white border border-slate-200 p-6 rounded-lg shadow-sm flex items-center gap-6 min-w-[280px]">
+            <div class="w-10 h-10 bg-[var(--secondary)]/10 rounded-2xl flex items-center justify-center text-[var(--secondary)] border border-[var(--secondary)]/20">
+                <i class="fa-solid fa-wallet text-xl"></i>
+            </div>
+            <div>
+                <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest">Available Balance</p>
+                <p class="text-[var(--primary)] text-xl font-black tabular-nums">$<span id="display-balance">1,240.50</span></p>
+            </div>
+        </div>
+    </div>
+    <div class="flex gap-2 p-2 bg-[var(--primary)] backdrop-blur-xl border border-white/5 rounded-lg w-fit">
+        <!-- Buttons use 'nav-' prefix -->
+        <button onclick="switchTab('vault')" id="nav-vault" class="tab-btn active-tab px-6 py-2 rounded-xl transition-all">Vault</button>
+        <button onclick="switchTab('ledger')" id="nav-ledger" class="tab-btn px-6 py-2 rounded-xl transition-all">Ledger</button>
+    </div>
+
+    <!-- Content areas use 'content-' prefix -->
+    <div id="content-vault" class="tab-content space-y-6">
+        <div class="bg-white border border-slate-200 rounded-lg p-10 py-5 shadow-sm">
+            <h3 class="text-[var(--primary)] text-xl font-black mb-4">Initiate Withdrawal</h3>
+            
+            <form id="withdrawal-form" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Amount Input -->
+                <div class="space-y-2">
+                    <label class="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-2">Amount to Liquidate</label>
+                    <div class="relative">
+                        <span class="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 font-bold">$</span>
+                        <input type="number" id="withdraw-amount" placeholder="0.00" step="0.01"
+                            class="w-full bg-slate-50 border border-[var(--primary)] rounded-lg py-3 pl-10 pr-6 text-[var(--primary)] font-semibold text-sm outline-none focus:ring-2 ring-[var(--secondary)]/20 transition-all">
+                    </div>
+                    <p class="text-[9px] text-slate-400 font-bold ml-2 italic">* Minimum $20.00 retention required in vault.</p>
+                </div>
+
+                <!-- Method Selection -->
+                <div class="space-y-2">
+                    <label class="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-2">Receiving Endpoint</label>
+                    <select id="withdraw-method" class="w-full bg-slate-50 border border-[var(--primary)] rounded-lg py-3 px-6 text-[var(--primary)] text-sm font-semibold outline-none appearance-none cursor-pointer">
+                        <option value="crypto" selected>TRON (TRC20) — Recommended</option>
+                        <option disabled value="bank">Direct Bank Wire</option>
+                        <option disabled value="paypal">PayPal Merchant</option>
+                    </select>
+                </div>
+
+                <!-- Address (Specific to Tron) -->
+                <div class="md:col-span-2 space-y-2">
+                    <label class="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-2">Wallet Address (TRC20)</label>
+                    <input type="text" id="wallet-address" placeholder="T..." 
+                        class="w-full bg-slate-50 border border-[var(--primary)] rounded-lg py-3 px-6 text-[var(--primary)] font-semibold text-sm outline-none focus:ring-2 ring-[var(--secondary)]/20 transition-all">
+                </div>
+
+                <div class="md:col-span-2 pt-4">
+                    <button type="button" onclick="openVerifyModal()" class="w-full py-5 bg-[var(--primary)] text-white rounded-lg font-black uppercase text-xs tracking-[0.3em] hover:bg-[var(--accent)] hover:shadow-xl hover:shadow-[var(--accent)]/20 transition-all">
+                        Execute Liquidation
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Tab Content: Ledger (Transactions) -->
+    <div id="content-ledger" class="tab-content hidden">
+        <div class="bg-white border border-slate-200 rounded-lg overflow-hidden shadow-sm">
+            <table class="w-full text-left">
+                <thead>
+                    <tr class="bg-slate-50 border-b border-slate-100">
+                        <th class="px-8 py-5 text-[9px] font-black text-slate-400 uppercase tracking-widest">ID</th>
+                        <th class="px-8 py-5 text-[9px] font-black text-slate-400 uppercase tracking-widest">Timestamp</th>
+                        <th class="px-8 py-5 text-[9px] font-black text-slate-400 uppercase tracking-widest">Type</th>
+                        <th class="px-8 py-5 text-[9px] font-black text-slate-400 uppercase tracking-widest">Status</th>
+                        <th class="px-8 py-5 text-right text-[9px] font-black text-slate-400 uppercase tracking-widest">Amount</th>
+                    </tr>
+                </thead>
+                <tbody id="ledger-rows">
+                    <!-- Dummy Rows Injected by JS -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Verification Modal -->
+<dialog id="verifyModal" class="p-0 rounded-3xl bg-transparent backdrop:backdrop-blur-md backdrop:bg-[#0F172A]/80">
+    <div class="w-full max-w-sm bg-[#1e293b] border space-y-4 border-slate-700 p-8 rounded-3xl shadow-2xl text-center">
+        <div class="w-10 h-10 bg-yellow-500/10 text-yellow-500 rounded-full flex items-center justify-center mx-auto mb-6 text-lg">
+            <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <h3 class="text-[var(--secondary)] text-xl font-black mb-2">Security Verification</h3>
+        <p class="text-[var(--background)] opacity-80 text-xs font-bold uppercase tracking-widest mb-8">Confirm password to authorize</p>
+        
+        <input type="password" id="verify-pass" placeholder="Enter System Password" 
+            class="w-full bg-black/40 border border-white/5 rounded-2xl py-4 px-5 text-white outline-none focus:border-[var(--secondary)]/50 focus:bg-black/60 transition-all font-bold">
+        
+        <div class="flex gap-4 mt-4">
+            <button onclick="document.getElementById('verifyModal').close()" class="flex-1 py-4 text-[var(--background)] font-semibold uppercase text-[10px] tracking-widest hover:text-[var(--background)] transition-all">Abort</button>
+            <button onclick="confirmWithdrawal()" class="flex-1 py-4 bg-[var(--secondary)] hover:bg-[var(--accent)] text-white rounded-lg font-semibold uppercase text-[10px] tracking-widest shadow-lg transition-all shadow-[var(--primary)]/20 transition-all">Verify & Send</button>
+        </div>
+    </div>
+</dialog>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/wallet.js') }}"></script>
+{% endblock %}

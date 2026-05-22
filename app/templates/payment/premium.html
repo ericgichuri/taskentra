@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block title %}Upgrade to Premium{% endblock %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto p-6 lg:p-12">
+    <!-- Header Section -->
+    <div class="text-center mb-16 relative">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-24 bg-[var(--accent)]/10 blur-[80px] rounded-full"></div>
+        <h1 class="text-[var(--primary)] text-5xl font-black tracking-tighter mb-4">Elevate Your Terminal</h1>
+        <p class="text-slate-500 text-sm font-bold uppercase tracking-[0.4em]">Unlock Level 10 Task Protocols</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+        
+        <!-- Feature Card -->
+        <div class="lg:col-span-2 bg-white border border-slate-200 rounded-[3rem] p-10 shadow-sm flex flex-col justify-between">
+            <div class="space-y-8">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-[var(--accent)]/10 rounded-2xl flex items-center justify-center text-[var(--accent)] border border-[var(--accent)]/20">
+                        <i class="fa-solid fa-bolt-lightning"></i>
+                    </div>
+                    <h3 class="text-[var(--primary)] text-2xl font-black">Premium Operator</h3>
+                </div>
+
+                <ul class="space-y-4">
+                    <li class="flex items-center gap-4 text-slate-600 font-bold text-sm">
+                        <i class="fa-solid fa-circle-check text-green-500"></i> Access up to 10 High-Yield Tasks daily
+                    </li>
+                    <li class="flex items-center gap-4 text-slate-600 font-bold text-sm">
+                        <i class="fa-solid fa-circle-check text-green-500"></i> Priority Backend Synchronization
+                    </li>
+                    <li class="flex items-center gap-4 text-slate-600 font-bold text-sm">
+                        <i class="fa-solid fa-circle-check text-green-500"></i> Instant Liquidation (No 24h hold)
+                    </li>
+                    <li class="flex items-center gap-4 text-slate-600 font-bold text-sm">
+                        <i class="fa-solid fa-circle-check text-green-500"></i> 24/7 Dedicated Support Link
+                    </li>
+                </ul>
+            </div>
+
+            <div class="mt-12 pt-8 border-t border-slate-100 flex items-center justify-between">
+                <div>
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Subscription Fee</p>
+                    <p class="text-3xl font-black text-[var(--primary)]">$29.99<span class="text-sm text-slate-400">/mo</span></p>
+                </div>
+                <button onclick="initiateUpgrade()" class="px-10 py-5 bg-[var(--primary)] text-white rounded-2xl font-black uppercase text-[11px] tracking-[0.2em] hover:bg-[var(--accent)] hover:shadow-xl hover:shadow-[var(--accent)]/20 transition-all">
+                    Initialize Upgrade
+                </button>
+            </div>
+        </div>
+
+        <!-- System Stats / Status Card -->
+        <div class="bg-[var(--primary)] rounded-[3rem] p-10 text-white relative overflow-hidden flex flex-col justify-center">
+            <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-white/5 blur-3xl rounded-full"></div>
+            <div class="relative z-10 text-center">
+                <p class="text-[9px] font-black text-slate-400 uppercase tracking-[0.3em] mb-6">Current Status</p>
+                <div class="w-20 h-20 border-4 border-white/10 border-t-[var(--accent)] rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fa-solid fa-user-shield text-2xl"></i>
+                </div>
+                <h4 class="text-xl font-black mb-2">Standard Acc.</h4>
+                <p class="text-slate-400 text-xs font-bold leading-relaxed">Upgrade to sync with Premium Task Nodes.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Payment Modal (QR Code) -->
+<dialog id="paymentModal" class="p-0 rounded-[3.5rem] bg-transparent backdrop:backdrop-blur-xl backdrop:bg-[#0F172A]/95">
+    <div class="w-full max-w-md bg-white p-12 rounded-[3.5rem] shadow-2xl relative overflow-hidden">
+        
+        <!-- Verification Header -->
+        <div class="text-center mb-8">
+            <h3 class="text-[var(--primary)] text-2xl font-black mb-2">Sync Payment</h3>
+            <p class="text-slate-500 text-[10px] font-bold uppercase tracking-widest">Scanning TRON Network...</p>
+        </div>
+
+        <!-- QR Display Container -->
+        <div class="bg-slate-50 border-2 border-dashed border-slate-200 rounded-3xl p-6 mb-8 flex flex-col items-center">
+            <div id="qr-container" class="bg-white p-4 rounded-2xl shadow-inner mb-4">
+                <!-- Generating a placeholder QR look -->
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TTaskentraPaymentAddress" alt="Payment QR" class="w-48 h-48 opacity-80">
+            </div>
+            <p class="text-[var(--primary)] font-mono text-[10px] break-all px-4 text-center">T7Xy9...Wp2Qv</p>
+            <button class="mt-4 text-[var(--accent)] text-[9px] font-black uppercase tracking-tighter hover:underline">Copy Address</button>
+        </div>
+
+        <!-- Status & Action -->
+        <div id="payment-status" class="space-y-4">
+            <div class="flex items-center justify-center gap-3 text-slate-400 py-2">
+                <i class="fa-solid fa-circle-notch fa-spin text-xs"></i>
+                <span class="text-[10px] font-black uppercase tracking-widest">Waiting for incoming TX...</span>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4 pt-4">
+                <button onclick="document.getElementById('paymentModal').close()" class="py-4 text-slate-400 font-black uppercase text-[9px] tracking-widest hover:text-[var(--primary)] transition-all">Cancel</button>
+                <button onclick="verifyPayment()" id="verify-btn" class="py-4 bg-[var(--primary)] text-white rounded-2xl font-black uppercase text-[9px] tracking-widest shadow-lg shadow-[var(--primary)]/10 transition-all">Verify Now</button>
+            </div>
+        </div>
+    </div>
+</dialog>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/premium.js') }}"></script>
+{% endblock %}
