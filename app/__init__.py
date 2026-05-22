@@ -4,8 +4,8 @@ from flask_migrate import Migrate
 from config import get_config
 
 # Initialize extensions outside the factory to keep them accessible
-db = SQLAlchemy()
-migrate = Migrate()
+#db = SQLAlchemy()
+#migrate = Migrate()
 
 def create_app():
     app = Flask(__name__)
