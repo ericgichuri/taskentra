@@ -15,8 +15,8 @@ def create_app():
     app.config.from_mapping(config_data)
 
     # Initialize Extensions
-    db.init_app(app)
-    migrate.init_app(app, db)
+    #db.init_app(app)
+    #migrate.init_app(app, db)
 
     # Register Blueprints (Placeholders for now)
     from app.routes.auth import auth_bp
